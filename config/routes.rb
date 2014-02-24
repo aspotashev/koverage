@@ -3,6 +3,19 @@ Koverage::Application.routes.draw do
   get "voting/my"
 
   devise_for :users
+
+  shallow do
+    resources :i18n_modules do
+      post :vote, on: :member
+      resources :i18n_packages do
+        post :vote, on: :member
+        resources :i18n_files do
+          post :vote, on: :member
+        end
+      end
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
