@@ -1,4 +1,6 @@
 Koverage::Application.routes.draw do
+  root 'voting#my'
+
   get "voting/index"
   get "voting/my"
 

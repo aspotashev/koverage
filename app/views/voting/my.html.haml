@@ -1,2 +1,21 @@
-%h1 Voting#my
-%p Find me in app/views/voting/my.html.haml
+:javascript
+  global.currentModuleId = #{@current_module.id};
+  global.currentPackageId = #{@current_package.id};
+  global.currentFileId = #{@current_file.id};
+
+%h1 My Votes
+#content-wrap
+  #modules.col
+    - @modules.each do |mod|
+      .item{ :id => "module-id-#{mod.id}" }
+        = mod.name
+  #packages.col
+    - @packages.each do |package|
+      .item{ :id => "package-id-#{package.id}",
+             :class => "belongs-module-id-#{package.i18n_module_id} " + (package.i18n_module == @current_module ? '' : 'hidden') }
+        = package.name
+  #files.col
+    - @files.each do |file|
+      .item{ :id => "file-id-#{file.id}",
+             :class => "belongs-package-id-#{file.i18n_package_id} " + (file.i18n_package == @current_package ? '' : 'hidden') }
+        = file.name

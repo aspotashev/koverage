@@ -21,3 +21,40 @@ ul.hmenu {
 ul.hmenu li {
   display: inline;
 }
+
+#content-wrap {
+  margin: 0 auto;
+  width: 1020px;
+}
+
+.col {
+  /* width: 330px; */
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  float: left;
+  margin-right: 20px;
+}
+
+.item {
+  background-color: #eae8f5;
+  width: 300px;
+  height: 36px;
+  margin: 2px 0px;
+}
+
+.active {
+  background-color: #cecce1;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
