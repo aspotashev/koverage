@@ -7,15 +7,14 @@
 #content-wrap
   #modules.col
     - @modules.each do |mod|
-      .item{ :id => "module-id-#{mod.id}" }
-        = mod.name
+      = render partial: "item", locals: { type: :module, id: mod.id, label: mod.name, hide: false }
   #packages.col
     - @packages.each do |package|
-      .item{ :id => "package-id-#{package.id}",
-             :class => "belongs-module-id-#{package.i18n_module_id} " + (package.i18n_module == @current_module ? '' : 'hidden') }
-        = package.name
+      = render partial: "item",
+        locals: { type: :package, id: package.id, parent_id: package.i18n_module_id,
+                  label: package.name, hide: package.i18n_module != @current_module }
   #files.col
     - @files.each do |file|
-      .item{ :id => "file-id-#{file.id}",
-             :class => "belongs-package-id-#{file.i18n_package_id} " + (file.i18n_package == @current_package ? '' : 'hidden') }
-        = file.name
+      = render partial: "item",
+        locals: { type: :file, id: file.id, parent_id: file.i18n_package_id,
+                  label: file.name, hide: file.i18n_package_id != @current_package }
