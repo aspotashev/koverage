@@ -11,4 +11,8 @@ class VotingController < ApplicationController
     @current_package = @current_module.i18n_packages.first
     @current_file = @current_package.i18n_files.first
   end
+
+  def full_tree
+    @votes_tree = I18nModule.order(:name).map(&:to_votes_tree)
+  end
 end

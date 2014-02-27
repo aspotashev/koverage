@@ -3,4 +3,8 @@ class I18nFile < ActiveRecord::Base
   has_many :users, through: :i18n_file_votes
 
   validates :name, presence: true, uniqueness: true
+
+  def to_votes_tree
+    { name: name, id: id } #, my_vote: users.find(current_user) || 0 }
+  end
 end

@@ -3,6 +3,7 @@ Koverage::Application.routes.draw do
 
   get "voting/index"
   get "voting/my"
+  get "voting/full_tree"
 
   devise_for :users
 
