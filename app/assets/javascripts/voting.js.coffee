@@ -16,23 +16,34 @@ packageToModule = (package_id) ->
 fileToPackage = (file_id) ->
   global.f2pCache[file_id]
 
+createViewItem = (text) ->
+  el = $('<div>')
+  el.addClass('item')
+  el.append(text)
+  for color in ['gray', 'pink', 'yellow', 'green']
+    btn = $('<div>')
+    btn.addClass('vote-btn')
+    btn.addClass(color)
+    el.append(btn)
+  el
+
 renderModuleList = ->
   mEl = $('#module.col')
   mEl.html('')
   for m in global.votes_tree
-    mEl.append('<div class="item">' + m.name + '</div>')
+    mEl.append(createViewItem(m.name))
 
 updatePackageList = ->
   pEl = $('#package.col')
   pEl.html('')
   for p in findById(global.votes_tree, global.currentModuleId).packages
-    pEl.append('<div class="item">' + p.name + '</div>')
+    pEl.append(createViewItem(p.name))
 
 updateFileList = ->
   fEl = $('#file.col')
   fEl.html('')
   for f in findPackageById(global.votes_tree, global.currentPackageId).files
-    fEl.append('<div class="item">' + f.name + '</div>')
+    fEl.append(createViewItem(f.name))
 
 # TBD: rewrite using indexById
 findById = (arr, id) ->
