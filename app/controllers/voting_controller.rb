@@ -13,6 +13,9 @@ class VotingController < ApplicationController
   end
 
   def full_tree
-    @votes_tree = I18nModule.order(:name).map(&:to_votes_tree)
+    respond_to do |format|
+      votes_tree = I18nModule.order(:name).map(&:to_votes_tree)
+      format.json { render :json => votes_tree }
+    end
   end
 end

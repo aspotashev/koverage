@@ -59,3 +59,27 @@ ul.hmenu li {
 h1 {
   text-align: center;
 }
+
+.vote-btn {
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  float: right;
+  margin: 4px;
+}
+
+.green {
+  background-color: #0bf375;
+}
+
+.yellow {
+  background-color: #f9f375;
+}
+
+.pink {
+  background-color: #f97575;
+}
+
+.gray {
+  background-color: #9998a0;
+}
