@@ -16,14 +16,19 @@ packageToModule = (package_id) ->
 fileToPackage = (file_id) ->
   global.f2pCache[file_id]
 
+createDiv = (classes) ->
+  d = $('<div>')
+  for cl in classes
+    d.addClass(cl)
+  d
+
 createViewItem = (text) ->
   el = $('<div>')
   el.addClass('item')
   el.append(text)
   for color in ['gray', 'pink', 'yellow', 'green']
-    btn = $('<div>')
-    btn.addClass('vote-btn')
-    btn.addClass(color)
+    btn = createDiv(['vote-btn', color])
+    btn.append(createDiv(['vote-empty']))
     el.append(btn)
   el
 

@@ -61,9 +61,9 @@ h1 {
 }
 
 .vote-btn {
-  width: 16px;
-  height: 16px;
-  border: 1px solid black;
+  width: 18px;
+  height: 18px;
+  /* border: 1px solid black; */
   float: right;
   margin: 4px;
 }
@@ -82,4 +82,12 @@ h1 {
 
 .gray {
   background-color: #9998a0;
+}
+
+.vote-empty {
+  margin: 2px;
+  padding: 0;
+  background-color: white;
+  width: 14px;
+  height: 14px;
 }
