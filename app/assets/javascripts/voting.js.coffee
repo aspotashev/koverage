@@ -25,7 +25,7 @@ createDiv = (classes) ->
 createViewItem = (text) ->
   el = $('<div>')
   el.addClass('item')
-  el.append(text)
+  el.append(createDiv(['text-content']).append(text))
   for color in ['gray', 'pink', 'yellow', 'green']
     btn = createDiv(['vote-btn', color])
     btn.append(createDiv(['vote-empty']))

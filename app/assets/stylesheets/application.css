@@ -91,3 +91,8 @@ h1 {
   width: 14px;
   height: 14px;
 }
+
+.text-content {
+  width: 180px;
+  float: left;
+}
