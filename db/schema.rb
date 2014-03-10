@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224164510) do
+ActiveRecord::Schema.define(version: 20140310131155) do
 
   create_table "i18n_file_votes", force: true do |t|
     t.integer  "user_id"
     t.integer  "i18n_file_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "choice"
   end
 
   create_table "i18n_files", force: true do |t|
