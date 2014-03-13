@@ -84,15 +84,28 @@ h1 {
   background-color: #9998a0;
 }
 
-.vote-empty {
+.vote-empty, .vote-full, .vote-partial {
   margin: 2px;
   padding: 0;
-  background-color: white;
   width: 14px;
   height: 14px;
+}
+
+.vote-empty {
+  background-color: white;
+}
+
+.vote-full {
+  /* background-color: white; */
+  /* TBD: different (darker?) colors for every border color - gray, green, rose, yellow */
+}
+
+.vote-partial {
+  background-image: url(vote-partial.png);
 }
 
 .text-content {
   width: 180px;
   float: left;
+  padding-left: 5px;
 }
