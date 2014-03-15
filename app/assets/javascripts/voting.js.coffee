@@ -273,7 +273,6 @@ setVoteInternal = (type, id, voteChoice) ->
 # voteChoice in ['gray', 'pink', 'yellow', 'green', 'none']
 # Render the chosen item and its dependencies
 renderVoteDependencies = (type, id) ->
-  #console.log(type)
   switch type
     when 'module'
       for p in findById(global.votes_tree, id).packages
@@ -293,10 +292,6 @@ renderVoteDependencies = (type, id) ->
       module_id = packageToModule(package_id)
       renderVote(packageElementById(package_id))
       renderVote(moduleElementById(module_id))
-    else
-      console.log('crap')
-      return
-  #console.log('setVote')
 
 addVote = (type, id, voteChoice) ->
   #console.log(type)
