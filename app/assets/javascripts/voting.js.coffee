@@ -99,11 +99,39 @@ packageElementById = (id) ->
 moduleElementById = (id) ->
   $('#module.col').children().eq(viewIndexById('module', id))
 
-changeCurrentFile = (id) ->
+onClickFile = (id) ->
   old_id = global.currentFileId
-  global.currentFileId = id
-  fileElementById(old_id).removeClass('active')
-  fileElementById(id).addClass('active')
+
+  new_id = id
+  # Second click clears selection
+  if old_id == id
+    new_id = undefined
+
+  global.currentFileId = new_id
+
+  if old_id != undefined and old_id != new_id
+    el = fileElementById(old_id)
+    if el
+      el.removeClass('active')
+
+  popup = $('#popup')
+  if new_id != undefined
+    fileElementById(new_id).addClass('active')
+    popup.html('<p>Loading...</p>')
+    popup.removeClass('hidden')
+    $.ajax(
+      type: 'get'
+      url: '/voting/file_voters'
+      dataType: 'html'
+      data:
+        'id' : new_id
+      success: (data) ->
+        popup.html(data)
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log(textStatus)
+    )
+  else
+    popup.addClass('hidden')
 
 changeCurrentPackage = (id) ->
   old_id = global.currentPackageId
@@ -140,7 +168,8 @@ propagateFolderSelection = ->
   if global.currentModuleId != packageToModule(global.currentPackageId)
     changeCurrentPackage(preferredPackage(global.currentModuleId))
   if global.currentPackageId != fileToPackage(global.currentFileId)
-    changeCurrentFile(preferredFile(global.currentPackageId))
+    onClickFile(undefined)
+  #  changeCurrentFile(preferredFile(global.currentPackageId))
 
 precalcParents = ->
   global.p2mCache = {}
@@ -310,14 +339,14 @@ onClickItem = (item) ->
   id = viewIdByIndex(type, viewIdx)
 
   idVar = 'current' + capitalizeFirstLetter(type) + 'Id'
-  if global[idVar] != id
+  if type == 'file'
+    onClickFile(id)
+  else if global[idVar] != id
     # do the explicitly requested change
     if type == 'module'
       changeCurrentModule(id)
     else if type == 'package'
       changeCurrentPackage(id)
-    else if type == 'file'
-      changeCurrentFile(id)
     # cleanup after the change
     propagateFolderSelection()
 
@@ -351,7 +380,7 @@ loadFullTree = ->
 
       changeCurrentModule(global.currentModuleId)
       changeCurrentPackage(global.currentPackageId)
-      changeCurrentFile(global.currentFileId)
+      #changeCurrentFile(global.currentFileId)
       propagateFolderSelection()
     error: (jqXHR, textStatus, errorThrown) ->
       alert(textStatus)

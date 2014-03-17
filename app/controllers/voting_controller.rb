@@ -74,4 +74,10 @@ class VotingController < ApplicationController
     end
 
   end
+
+  def file_voters
+    @file = I18nFile.find(params[:id])
+    @votes = I18nFileVote.where(:i18n_file_id => params[:id]).where.not(:choice => 0)
+    render :layout => false
+  end
 end

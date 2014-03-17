@@ -1,20 +1,29 @@
 :javascript
   global.currentModuleId = #{@current_module.id};
   global.currentPackageId = #{@current_package.id};
-  global.currentFileId = #{@current_file.id};
+  // global.currentFileId = #{@current_file.id};
+  global.currentFileId = undefined;
 
-%h1 My Votes
+-#%h1 My Votes
 #content-wrap
-  #module.col
-    -# - @modules.each do |mod|
-    -#   = render partial: "item", locals: { type: :module, id: mod.id, label: mod.name, hide: false }
-  #package.col
-    -# - @packages.each do |package|
-    -#   = render partial: "item",
-    -#     locals: { type: :package, id: package.id, parent_id: package.i18n_module_id,
-    -#               label: package.name, hide: package.i18n_module != @current_module }
-  #file.col
-    -# - @files.each do |file|
-    -#   = render partial: "item",
-    -#     locals: { type: :file, id: file.id, parent_id: file.i18n_package_id,
-    -#               label: file.name, hide: file.i18n_package_id != @current_package }
+  #column-headers
+    .col-header Modules
+    .col-header Packages
+    .col-header Files
+  #main-columns
+    #module.col
+      -# - @modules.each do |mod|
+      -#   = render partial: "item", locals: { type: :module, id: mod.id, label: mod.name, hide: false }
+    #package.col
+      -# - @packages.each do |package|
+      -#   = render partial: "item",
+      -#     locals: { type: :package, id: package.id, parent_id: package.i18n_module_id,
+      -#               label: package.name, hide: package.i18n_module != @current_module }
+    #file.col
+      -# - @files.each do |file|
+      -#   = render partial: "item",
+      -#     locals: { type: :file, id: file.id, parent_id: file.i18n_package_id,
+      -#               label: file.name, hide: file.i18n_package_id != @current_package }
+  #popup-wrapper-fullwidth
+    #popup-wrapper
+      #popup.hidden

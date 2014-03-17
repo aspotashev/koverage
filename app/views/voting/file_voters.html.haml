@@ -1,0 +1,13 @@
+.voters-title1= @file.i18n_package.i18n_module.name
+.voters-title2= @file.i18n_package.name
+.voters-title3= @file.name + '.po'
+%hr
+- if @votes.empty?
+  %p= t(:nobody_engaged)
+- else
+  - @votes.group_by(&:choice).each do |choice, group|
+    - choice_string = group.first.choice_string
+    %p= t('engaged_group_title.' + choice_string)
+    %ul{ :class => 'voter-' + choice_string }
+      - group.each do |v|
+        %li= v.user.email

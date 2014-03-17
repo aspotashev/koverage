@@ -4,6 +4,7 @@ Koverage::Application.routes.draw do
   get "voting/index"
   get "voting/my"
   get "voting/full_tree"
+  get "voting/file_voters"
   put "voting/set_vote"
 
   devise_for :users
