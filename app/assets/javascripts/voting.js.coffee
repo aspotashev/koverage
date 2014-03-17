@@ -415,22 +415,6 @@ initVotingMy = ->
 
   loadFullTree()
 
-#      //edit innerHTML of basic_modal
-#      $('.basic_modal').html(
-#        "<div id='modal_image'><%= escape_javascript(image_tag p[:url]) %></div><div id='photo_title'><%=data.title %></div>"
-#       );
-#
-#      //load modal
-#        $('.basic_modal').modal({
-#        overlayClose:true
-#      });
-#
-#    } //end success: function(result)
-#  });
-
-
-  # $('.item').append('<div class="vote-btn gray"></div>')
-
   $(document).on 'click', '.item', ->
     onClickItem($(this))
 
