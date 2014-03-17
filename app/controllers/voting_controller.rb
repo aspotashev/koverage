@@ -1,5 +1,10 @@
 class VotingController < ApplicationController
+  before_action :authenticate_user!, :only => [:my]
+
   def index
+    if user_signed_in?
+      redirect_to :action => :my
+    end
   end
 
   def my
