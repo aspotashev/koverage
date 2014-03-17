@@ -386,7 +386,7 @@ loadFullTree = ->
       alert(textStatus)
   )
 
-$(document).ready ->
+initVotingMy = ->
   #changeCurrentModule(global.currentModuleId)
   #changeCurrentPackage(global.currentPackageId)
   #changeCurrentFile(global.currentFileId)
@@ -450,3 +450,6 @@ $(document).ready ->
       when 'vote-full'
         removeVote(type, id)
 
+$(document).ready ->
+  if $('#main-columns').length > 0
+    initVotingMy()
