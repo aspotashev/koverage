@@ -2,7 +2,7 @@ Koverage::Application.routes.draw do
   root 'voting#index'
 
   get "voting/index"
-  get "voting/my"
+  get '/my', :to => 'voting#my'
   get "voting/full_tree"
   get "voting/file_voters"
   put "voting/set_vote"
