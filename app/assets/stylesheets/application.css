@@ -135,7 +135,7 @@ h1, h2 {
   top: 100px;
 
   /* http://stackoverflow.com/questions/3680429/click-through-a-div-to-underlying-elements */
-  /* TBD: add fix for IE */
+  /* TBD: add fix for IE and Opera */
   pointer-events: none;
 }
 
@@ -157,7 +157,7 @@ h1, h2 {
   overflow-y: auto;
 
   /* http://stackoverflow.com/questions/3680429/click-through-a-div-to-underlying-elements */
-  /* TBD: add fix for IE */
+  /* TBD: add fix for IE and Opera */
   pointer-events: auto;
 }
 
