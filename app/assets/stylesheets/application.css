@@ -12,6 +12,11 @@
  *= require_tree .
  */
 
+body {
+  font-family: 'Liberation Serif', serif;
+  font-size: 16px;
+}
+
 ul.hmenu {
   list-style: none;
   margin: 0 0 0.5em;
@@ -54,6 +59,10 @@ ul.hmenu li {
   width: auto;
   height: 36px;
   margin: 2px 0px;
+}
+
+.item:first-child, .item:last-child {
+  margin: 0 0;
 }
 
 .active {
@@ -147,6 +156,9 @@ h1, h2 {
 #popup {
   width: 600px;
   height: 400px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
 
   background-color: #ffffdd;
   border: 1px solid #d7d7d7;
@@ -155,10 +167,6 @@ h1, h2 {
   padding: 6px;
   overflow-x: auto;
   overflow-y: auto;
-
-  /* http://stackoverflow.com/questions/3680429/click-through-a-div-to-underlying-elements */
-  /* TBD: add fix for IE and Opera */
-  pointer-events: auto;
 }
 
 .voters-title1 {
