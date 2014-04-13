@@ -190,3 +190,19 @@ hr {
   background: #ccc;
   border: 0;
 }
+
+#page-loading-stub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -150px;
+  width: 300px;
+  height: 100px;
+
+  clear: both;
+  text-align: center;
+
+  font-size: 16pt;
+  color: #707010;
+}

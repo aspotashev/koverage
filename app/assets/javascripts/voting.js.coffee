@@ -382,6 +382,9 @@ loadFullTree = ->
       changeCurrentPackage(global.currentPackageId)
       #changeCurrentFile(global.currentFileId)
       propagateFolderSelection()
+
+      $('#page-loading-stub').remove()
+      $('#content-wrap').removeClass('hidden')
     error: (jqXHR, textStatus, errorThrown) ->
       alert(textStatus)
   )
