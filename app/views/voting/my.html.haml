@@ -3,12 +3,12 @@
   global.currentPackageId = #{@current_package.id};
   global.currentFileId = undefined;
 
-%h1= t(:title)
-#content-wrap
+%h1= t '.title'
+#content-wrap.hidden
   #column-headers
-    .col-header Modules
-    .col-header Packages
-    .col-header Files
+    .col-header= t '.modules'
+    .col-header= t '.packages'
+    .col-header= t '.files'
   #main-columns
     #module.col
     #package.col
